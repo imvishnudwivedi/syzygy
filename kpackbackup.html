@@ -1,0 +1,156 @@
+@extends('website.layouts.main')
+
+@section('content')
+    <div id="tx"></div>
+    <div class="banner banner4">
+      <div class="container">
+        <h4>Contact</h4>
+        <div class="site_map">
+          <a href="{{URL::route('home')}}">Home</a> / Contact
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <!-- content 
+      ================================================== -->
+    <div id="content">
+      
+
+      <div class="contact-content">
+
+        <div class="contact">
+          <div class="container">
+
+            <div class="row">
+
+              <div class="col-md-6">
+                 {!!Form::open(array('route' => array('contact.post'), 'method' => 'POST','files'=>true,'id'=>'contact-form'))!!}
+                  <input name="name" id="name" type="text" style="color: #000;" placeholder="Name" required="">
+
+                  <input name="mail" id="mail" type="text" style="color: #000;"   placeholder="Email" required="">
+
+                  <input name="subject" id="subject" type="text" style="color: #000;"  placeholder="Subject">  
+
+                  <textarea name="comment" id="comment" style="color: #000";  placeholder="Message" required="" style="height:255px;"></textarea>
+
+                  {!! Form::hidden('fake_mailer','sales@kpack.in') !!}
+                    {{-- <input type="submit" value="Send"  id="submit_contact"> --}}
+                    {!!  Form::submit('Send', ['class' => 'btn btn-block btn-success btn-block','id'=>'submit_contact']) !!}
+                    <div id="msg" class="message"></div>
+                 {!! Form::close() !!}
+              </div>
+              <!-- end contactfort -->
+              <div class="col-md-6">
+              <div class="row">
+              <div class="col-md-6 touch">
+
+                <h1 class="leftmain-title">Bangalore Office</h1>
+                
+                <p><i class="fa fa-map-marker"></i>Unit No- 004, Embassy Square,<br>
+                
+               Ground Floor, # 148 Infantry Road, <br>
+              Bangalore- 560001, INDIA
+                 
+                <br><i class="fa fa-phone"></i>  +91-80-22351122 | 22381122  
+              <br><i class="fa fa-fax"></i> +91-80-22381399 
+              <a href="mailto:info@kpack.in"><i class="fa fa-envelope"></i>Email: info@kpack.in</a></p>
+              </div>
+
+              <div class="col-md-6 touch">
+                <h1 class="leftmain-title">K-Pack Systems Pvt Ltd – Bangalore Factory</h1>
+                 
+                
+                
+                <p><i class="fa fa-map-marker"></i>Sy.Number 103, Tigalarapalya Main Rd, 
+                 
+Pennya Post, Karivobanahalli,<br> Tigalarapalya,
+Bengaluru,  <br> Karnataka 560058
+                 
+              </div>
+                 <div class='clearfix'></div>
+         
+                 <div class='clearfix'></div>
+              <div class="col-md-6 touch">
+
+                <h1 class="leftmain-title">Mumbai Office</h1>
+                
+ 
+
+              <p><i class="fa fa-map-marker"></i><b>Mumbai Office</b><br>
+                305, Konark Shram
+                3rd Floor,<br>
+                Behind Everest Building
+                Tardeo Main Road<br>
+                Tardeo,
+                Mumbai-400 034
+
+
+                <br><i class="fa fa-phone"></i>  +(91) - 22 66333272
+              <br><i class="fa fa-phone"></i> +(91) - 22 66333273
+             
+ 
+
+ 
+              </div>
+              {{-- <div class="col-md-6 touch">
+
+               <h1 class="leftmain-title">K pack Hygiene</h1>
+                
+                <p><i class="fa fa-map-marker"></i>Unit No- 004, Embassy Square,<br>
+                
+               Ground Floor, # 148 Infantry Road, <br>
+              Bangalore- 560001, INDIA
+                 
+                <br><i class="fa fa-phone"></i>  +91-80-22351122 | 22381122  
+              <br><i class="fa fa-fax"></i> +91-80-22381399 
+              <a href="mailto:info@kpack.in"><i class="fa fa-envelope"></i>Email: clean@kpack.in</a></p>
+             
+
+              
+
+            </div> --}}
+            </div>
+            </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="map">
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248856.03541095453!2d77.41341039068348!3d12.94780378761003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae166f2983f6cf%3A0x59e5897886da545c!2sEmbassy+Square!5e0!3m2!1sen!2sin!4v1509426677670" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <!-- End Map -->
+
+
+      </div>
+      <!-- End Contact Content -->
+
+
+    </div>
+@endsection
+
+@section('script')
+  @parent
+  <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+   <script src="{{ asset ("/website/js/gmap3.min.js")}}"></script>
+      <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script src="{{ asset ("/website/js/telex.js")}}"></script>
+<script>
+// <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">Send Mail</a>
+
+$('#tx').telex({
+    messages: [
+        {
+            id: 'msg1',
+            content: 'If you are interested in dealership with K-PACK, please contact info@kpack.in'
+        },
+        
+    ],
+    delay: 0
+    });
+
+</script>
+@stop

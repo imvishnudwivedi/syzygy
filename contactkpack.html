@@ -1,0 +1,15 @@
+ {!!Form::open(array('route' => array('contact.post'), 'method' => 'POST','files'=>true,'id'=>'contact-form'))!!}
+                  <input name="name" id="name" type="text" style="color: #000;" placeholder="Name" required="">
+
+                  <input name="mail" id="mail" type="text" style="color: #000;"   placeholder="Email" required="">
+
+                  <input name="subject" id="subject" type="text" style="color: #000;"  placeholder="Subject">  
+
+                  <textarea name="comment" id="comment" style="color: #000";  placeholder="Message" required="" style="height:255px;"></textarea>
+                  <div class="g-recaptcha" data-sitekey="6LcPtBwUAAAAAF8HSAQAiy7lbqeoC8b-ErNP0fQe"></div>
+
+                  {!! Form::hidden('fake_mailer','sales@kpack.in') !!}
+                    {{-- <input type="submit" value="Send"  id="submit_contact"> --}}
+                    {!!  Form::submit('Send', ['class' => 'btn btn-block btn-success btn-block','id'=>'submit_contact']) !!}
+                    <div id="msg" class="message"></div>
+                 {!! Form::close() !!}
